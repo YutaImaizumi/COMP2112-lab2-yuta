@@ -17,7 +17,7 @@
     let heroes = [
     {'name' : 'Prof. Xavier', 'twitter' : '@profx', 'pic' : 'http://www.animatedimages.org/data/media/450/animated-marvel-avatar-image-0004.gif'},
     {'name' : 'Spiderman', 'twitter' : '@spidey', 'pic' : 'http://www.animatedimages.org/data/media/450/animated-marvel-avatar-image-0008.gif'},  
-    {'name' : 'Wolverine', 'pic' : 'http://www.animatedimages.org/data/media/450/animated-marvel-avatar-image-0011.gif', 'twitter' : '@logan' }
+    {'name' : 'Wolverine', 'twitter' : '@logan', 'pic' : 'http://www.animatedimages.org/data/media/450/animated-marvel-avatar-image-0011.gif'}
     ];
 
 
@@ -53,14 +53,15 @@ function render(heroes){
 let btn_follow = Array.from(document.querySelectorAll('[data-id]') );
 btn_follow.map( btn => btn.addEventListener('click', function(e){
     e.preventDefault();
+    
 
-    if (heroes(this.dataset.id).following === true) {
-        delete heroes(this.dataset.id).following;
-        console.info(`Unfollowed ${heroes(this.dataset.id).name}`)
+    if (heroes[this.dataset.id].following === true) {
+        delete heroes[this.dataset.id].following;
+        console.info(`Unfollowed ${heroes[this.dataset.id].name}`)
 
     }else{
-        heroes(this.dataset.id).following = true;
-        console.info(`Following ${heroes(this.dataset.id).name}`)
+        heroes[this.dataset.id].following = true;
+        console.info(`Following ${heroes[this.dataset.id].name}`)
     }
 
 
@@ -77,7 +78,7 @@ render(heroes);
     function* idMaker() {
         var index = 0;
         while (index < moreHeroes.length)
-            yield moreHeroes(index++);
+            yield moreHeroes[index++];
     }
 
     var gen = idMaker();
